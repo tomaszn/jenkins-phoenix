@@ -18,6 +18,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker:/var/lib/docker
+    environment:
+      - ANOTHER_SSH_HOST=another_machine
+      - ANOTHER_SSH_PASS=very_secret
 
   jenkins:
     build: jenkins
