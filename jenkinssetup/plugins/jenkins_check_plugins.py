@@ -14,10 +14,10 @@ while True:
         installed_plugins.append(key[0])
     break
 
-#print str(set(plugins))
-#print str(set(installed_plugins))
-#print str(set(plugins) - set(installed_plugins))
+print 'Plugins wanted:', str(set(plugins))
+print 'Plugins currently installed:', str(set(installed_plugins))
 if len(set(plugins) - set(installed_plugins)) == 0:
-	print 'OK'
+    print 'OK'
 else:
-	print 'WAIT'
+    print 'Plugins still missing:', str(set(plugins) - set(installed_plugins))
+    print 'WAIT'

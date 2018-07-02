@@ -9,10 +9,14 @@ plugins = (
     "delivery-pipeline-plugin",
     "workflow-aggregator",
     "docker-workflow",
-    "buildgraph-view",
     "greenballs",
     "backup",
     "swarm",
+
+    # UI testing
+    "ui-test-capture",
+    "testingbot",
+
+    # Blue Ocean
+    "blueocean",
 )
-    #"pipeline-plugin",
-    #"jenkinslint-plugin",
