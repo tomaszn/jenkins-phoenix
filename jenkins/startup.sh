@@ -10,5 +10,12 @@ sudo cron -L 8
 socat -u TCP-LISTEN:9000,reuseaddr,fork OPEN:/var/jenkins_home/config.xml,creat,trunk &
 socat -u TCP-LISTEN:9001,reuseaddr,fork EXEC:'/replace_config.sh > /tmp/asd && tac /tmp/asd' &
 
+mkdir -p ~/.ssh/
+ANOTHER_SSH_HOST=another_machine
+ANOTHER_SSH_PASS=very_secret
+ssh-keyscan ${ANOTHER_SSH_HOST} >> ~/.ssh/known_hosts
+ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
+sshpass -p ${ANOTHER_SSH_PASS} ssh-copy-id jenkins@${ANOTHER_SSH_HOST} #-i /etc/ssh/ssh_host_rsa_key
+
 # The original entrypoint for the jenkins container
-/bin/tini -- /usr/local/bin/jenkins.sh
+/sbin/tini -- /usr/local/bin/jenkins.sh

@@ -1,8 +1,9 @@
-FROM jenkins:2.7.1
+FROM jenkins/jenkins:latest
 
 # Assume root privs
 USER root
-RUN apt-get update && apt-get install -y vim socat cron sudo docker.io
+RUN apt-get update && apt-get install -y vim socat cron sudo sshpass curl
+RUN curl -sSL https://get.docker.com/ | sh
 RUN sed -i 's/^.sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 RUN adduser jenkins sudo
 RUN adduser jenkins docker

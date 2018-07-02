@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.1" encoding="UTF-8"?>
 <hudson>
   <disabledAdministrativeMonitors/>
   <version>1.642.1</version>
@@ -11,7 +11,6 @@
   <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
   <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
   <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
-  <jdks/>
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
   <clouds>
@@ -41,7 +40,7 @@
           </retentionStrategy>
           <numExecutors>1</numExecutors>
           <dockerTemplateBase>
-            <image>imiell/jenkinsdockerslave</image>
+            <image>jenkinsphoenix_jenkinsslave1</image>
             <dockerCommand></dockerCommand>
             <lxcConfString></lxcConfString>
             <hostname></hostname>
@@ -62,7 +61,7 @@
           <pullStrategy>PULL_ALWAYS</pullStrategy>
         </com.nirima.jenkins.plugins.docker.DockerTemplate>
       </templates>
-      <serverUrl>http://172.17.0.1:4243</serverUrl>
+      <serverUrl>unix:///var/run/docker.sock</serverUrl>
       <connectTimeout>5</connectTimeout>
       <readTimeout>5</readTimeout>
       <credentialsId></credentialsId>
