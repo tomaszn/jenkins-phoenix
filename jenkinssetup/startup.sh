@@ -63,8 +63,13 @@ cat simple_jenkins_job.xml       | java -jar /jenkins_setup/jenkins-cli.jar -s h
 cat workflow_docker.xml          | java -jar /jenkins_setup/jenkins-cli.jar -s http://jenkins:8080 create-job 'dockercloud-pipeline-job'
 cat docker_build.xml             | java -jar /jenkins_setup/jenkins-cli.jar -s http://jenkins:8080 create-job 'docker-build'
 cat simple_jenkins_swarm_job.xml | java -jar /jenkins_setup/jenkins-cli.jar -s http://jenkins:8080 create-job 'simple-jenkins-swarm-job'
+cat multibranch-pipeline.xml     | java -jar /jenkins_setup/jenkins-cli.jar -s http://jenkins:8080 create-job 'multibranch-pipeline'
 popd
 echo Uploading jobs done
+
+echo Schedule indexing of multibranch pipelines
+REPO='ssh://another_machine/var/lib/git/my_repo/' curl "http://jenkins:8080/git/notifyCommit?url=${REPO}&delay=0sec"
+echo Scheduling done
 
 # Sleep forever
 sleep infinity
