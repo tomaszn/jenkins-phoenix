@@ -17,28 +17,6 @@ function restart_and_wait_for_jenkins() {
 
 wait_for_jenkins
 
-# Set up plugins. Restart until complete
-# do a while loop waiting for confirmed installation
-echo Plugin install started
-pushd plugins
-sleeptime=30
-while [[ /bin/true ]]
-do
-	python jenkins_plugins.py
-	sleeptime=$(($sleeptime + $sleeptime))
-	echo waiting for $sleeptime before re-checking plugins
-	sleep $sleeptime
-	python jenkins_check_plugins.py
-	if [[ $(python jenkins_check_plugins.py | tail -1) = 'OK' ]]
-	then
-		break
-	fi
-	restart_and_wait_for_jenkins
-done
-restart_and_wait_for_jenkins
-popd
-echo Plugin install complete
-
 # Set up credentials
 echo Setting up credentials
 pushd credentials

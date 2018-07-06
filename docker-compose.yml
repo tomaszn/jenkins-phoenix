@@ -33,6 +33,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker:/var/lib/docker
+    environment:
+      - JAVA_OPTS=-Dhudson.footerURL=http://mycompany.com
 
   jenkinssetup:
     container_name: jenkinssetup
